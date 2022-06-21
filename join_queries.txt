@@ -67,3 +67,14 @@ INNER JOIN `departments`
 ON `degrees`.`department_id` = `departments`.`id`
 WHERE `departments`.`name` = 'Dipartimento di Matematica'
 ORDER BY `teachers`.`surname`, `teachers`.`name`;
+
+
+7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
+superare ciascuno dei suoi esami
+
+SELECT `exam_student`.`exam_id`, `exam_student`.`vote`, `students`.`surname`, `students`.`name`
+FROM `exam_student`
+LEFT JOIN `students`
+ON `exam_student`.`student_id` = `students`.`id`
+WHERE `exam_student`.`vote` < 18
+ORDER BY `students`.`id`;
