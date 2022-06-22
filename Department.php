@@ -21,4 +21,14 @@ class Department {
         $this->website = $_website;
         $this->head_of_dep = $_head_of_dep;
     }
+
+    public function getInfo() {
+        return [
+            "address" => $this->address,
+            "phone" => $this->phone,
+            "email" => $this->email,
+            "website" => $this->website,
+            "head_of_department" => $this->head_of_dep
+        ];
+    }
 }

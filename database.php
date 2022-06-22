@@ -29,5 +29,3 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "Query error";
 }
-
-var_dump($dep_array);
