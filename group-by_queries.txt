@@ -8,9 +8,9 @@ ORDER BY `years`;
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
-SELECT COUNT(*) AS `teachers_number`, `teachers`.`office_number`
+SELECT COUNT(*) AS `teachers_number`, `teachers`.`office_address`
 FROM `teachers`
-GROUP BY `teachers`.`office_number`;
+GROUP BY `teachers`.`office_address`;
 
 
 3. Calcolare la media dei voti di ogni appello d'esame
