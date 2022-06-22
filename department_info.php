@@ -43,7 +43,7 @@ if ($result_dep && $result_dep->num_rows > 0) {
                 <li>
                     <span>
                         <?php
-                            if (strpos($key, "_")) {
+                            if (strpos($key, "_") !== false) {
                                 $key = str_replace("_", " ", $key);
                             }
                             echo ucfirst($key); 
