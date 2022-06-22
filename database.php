@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/Department.php";
 
 define("DB_SERVERNAME", "localhost");
 define("DB_USERNAME", "root");
@@ -10,6 +11,23 @@ $connection = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PO
 
 if ($connection && $connection->connect_error) {
     echo "Connection error: " . $connection->connect_error;
-} elseif ($connection) {
-    echo "Connection successful";
+    die();
 }
+
+$sql = "SELECT * FROM `departments`";
+$result = $connection->query($sql);
+$dep_array = [];
+
+if ($result && $result->num_rows > 0) {
+    while($single_row = $result->fetch_assoc()) {
+        $single_dep = new Department($single_row["id"], $single_row["name"]);
+        $single_dep->setInfo($single_row["address"], $single_row["phone"], $single_row["email"], $single_row["website"], $single_row["head_of_department"]);
+        $dep_array[] = $single_dep;
+    }
+} elseif ($result) {
+    echo "There are no results";
+} else {
+    echo "Query error";
+}
+
+var_dump($dep_array);
